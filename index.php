@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Раян
- * Date: 11.03.2019
- * Time: 16:47
- */
+require  __DIR__.'/autoload.php';
+
+$db = new \App\Db();
+$res = $db->query("INSERT INTO foo(name) VALUES('Sion')");
+print_r($res);

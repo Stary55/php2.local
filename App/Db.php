@@ -9,13 +9,13 @@
 namespace App;
 
 
-class Db
+class Db extends Singleton
 {
     protected $dbh;
 
-    public function  __construct()
+    protected function  __construct()
     {
-        $this->dbh = new \PDO("mysql:host=localhost; dbname=test1","root","root");
+        $this->dbh = new \PDO("mysql:host=localhost; dbname=test","root","root");
     }
 
     public function execute($sql)
@@ -24,12 +24,12 @@ class Db
         return $sth->execute();
     }
 
-    public function query($sql)
+    public function query($sql,$class)
     {
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute();
             if(false !== $res){
-                return $sth->fetchAll();
+                return $sth->fetchAll(\PDO::FETCH_CLASS,$class);
             }
         return [];
     }

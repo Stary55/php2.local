@@ -19,10 +19,10 @@ class Db
         $this->dbh = new \PDO("mysql:host=localhost; dbname=test","root","root");
     }
 
-    public function execute($sql)
+    public function execute($sql,$params=[])
     {
         $sth = $this->dbh->prepare($sql);
-        return $sth->execute();
+        return $sth->execute($params);
     }
 
     public function query($sql,$class)

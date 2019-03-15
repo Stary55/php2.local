@@ -1,6 +1,11 @@
 <?php
+
 require  __DIR__.'/autoload.php';
 
-$db = new \App\Db();
-$res = $db->query("INSERT INTO foo(name) VALUES('Sion')");
-print_r($res);
+use App\Models\User;
+
+$user = new User;
+$user->name = 'Sych';
+$user->email = 's@mail.com';
+
+

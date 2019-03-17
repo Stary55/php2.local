@@ -2,10 +2,6 @@
 
 require  __DIR__.'/autoload.php';
 
-use App\Models\User;
 
-$user = new User;
-$user->name = 'Sych';
-$user->email = 's@mail.com';
-
-
+$controller = new \App\controllers\News();
+$controller->action('Index');
